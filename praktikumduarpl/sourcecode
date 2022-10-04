@@ -1,0 +1,80 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+class Diskriminan extends JFrame {
+	private JLabel lblpesan1;
+	private JLabel lblpesan2;
+	private JLabel lblpesan3;
+	JTextField input1 = new JTextField();
+	JTextField input2 = new JTextField();
+	JTextField input3 = new JTextField();
+	private JButton button1;
+	private JLabel lblhasil;
+	
+	public Diskriminan(String title) {
+		super(title);
+		setSize(350,160);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		
+		lblpesan1 = new JLabel("A =");
+		lblpesan1.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		lblpesan1.setFont(new Font("Verdana", Font.PLAIN, 18));
+
+		lblpesan2 = new JLabel("B =");
+		lblpesan2.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		lblpesan2.setFont(new Font("Verdana", Font.PLAIN, 18));
+
+		lblpesan3 = new JLabel("C =");
+		lblpesan3.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		lblpesan3.setFont(new Font("Verdana", Font.PLAIN, 18));
+
+		button1 = new JButton("Cari D");
+		lblhasil = new JLabel("Hasil?");
+		lblhasil.setHorizontalAlignment(SwingConstants.CENTER);
+
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(4,2));
+		panel.add(lblpesan1);
+		panel.add(input1);
+		panel.add(lblpesan2);
+		panel.add(input2);
+		panel.add(lblpesan3);
+		panel.add(input3);
+		panel.add(button1);
+		panel.add(lblhasil);
+		
+		Container c = getContentPane();
+		c.add(panel);
+
+
+		
+		button1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+				String txt1 = input1.getText();
+				int num1 = Integer.parseInt(txt1);
+				String txt2 = input2.getText();
+				int num2 = Integer.parseInt(txt2);
+				String txt3 = input3.getText();
+				int num3 = Integer.parseInt(txt3);
+				
+				int hasil = num2*num2 - (4 * num1 * num3);
+				
+                lblhasil.setText("D = " + hasil);
+            }
+        });
+		
+		setVisible(true);
+	}
+}
+
+public class HitungD {
+	public static void main(String[] args)
+	{
+		new Diskriminan("Rafli Riansyah - 064002100028");
+	}
+}
